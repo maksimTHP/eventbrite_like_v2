@@ -69,4 +69,5 @@ gem 'dotenv-rails'
 #Table Print
 gem 'table_print'
 
-  gem 'letter_opener'
+gem 'letter_opener'
+gem 'devise'
