@@ -1,0 +1,23 @@
+
+
+
+
+  <p class="alert alert-primary">
+    Clique sur le numéro pour afficher l'évènement</p>
+  <div class="row" style="margin-top: 15px;">
+    <!-- récuperation des données, ligne par ligne pour l'affichage -->
+    <% Event.all.each do |event| %>
+
+    <div class="card" style="width: 18rem;">
+  <!-- <img class="card-img-top" src="/eventbrite.jpg" alt="Card image cap"> -->
+  <%= image_tag "/img/eventbrite.jpg", alt: "event_picture", class:"card-img-top" %>
+  <div class="card-body">
+    <h5 class="card-title"><%= event.title %></h5>
+    <p class="card-text"><%= event.description %></p>
+    <%= link_to "Voir l'évènement", event_path(event.id), class:'btn btn-success' %>
+  </div>
+</div>
+
+
+      </div>
+    <% end %>

@@ -12,60 +12,73 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- -end- download from bootstrap CDN and others -->
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="container">
     <header>
       <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #b0c4de;">
-<!--        <svg class="navbar-brand" data-prefix="far" data-icon="bullhorn" role="img" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 576 512" fill="currentColor">
-          <path fill="currentColor" d="M544 184.88V32.01C544 23.26 537.02 0 512.01 0H512c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64l-.48 32c0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h106.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13c19.05-11.09 32-31.49 32-55.12.01-23.64-12.94-44.04-31.99-55.13zM127.73 464c-10.76-25.45-16.21-52.31-16.21-80 0-14.22 1.72-25.34 2.6-32h64.91c-2.09 10.7-3.52 21.41-3.52 32 0 28.22 6.58 55.4 19.21 80h-66.99zM240 304H64c-8.82 0-16-7.18-16-16v-96c0-8.82 7.18-16 16-16h176v128zm256 110.7l-59.04-47.24c-42.8-34.22-94.79-55.37-148.96-61.45V173.99c54.17-6.08 106.16-27.23 148.97-61.46L496 65.3v349.4z" class="">
-          </path>
-        </svg> -->
+        <svg class="navbar-brand bi bi-music-player" width="2em" viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M14 3H6a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1zM6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6z" clip-rule="evenodd"></path>
+          <path fill-rule="evenodd" d="M13 5H7v3h6V5zM7 4a1 1 0 00-1 1v3a1 1 0 001 1h6a1 1 0 001-1V5a1 1 0 00-1-1H7zm3 11a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"></path>
+          <circle cx="10" cy="13" r="1"></circle>
+        </svg>
+
         <%= link_to 'THP EventBrite Like', index_path, class:'navbar-brand' %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <%= link_to 'Accueil', index_path, class:'nav-item nav-link active' %>
             <% if user_signed_in? %>
-            <div class="nav-item dropdown">
+              <div class="nav-item dropdown">
                 <%= link_to 'Les événements', nil, class:'nav-link dropdown-toggle', 'id'=>"dropdownMenu2", 'data-toggle'=>"dropdown", 'aria-haspopup'=>"true", 'aria-expanded'=>"false"%>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                   <%= link_to 'Voir les événements', index_path, class:'dropdown-item' %>
-                  <%= link_to 'Ajouter un événement', nil, class:'dropdown-item' %>
+                  <%= link_to 'Ajouter un événement',new_event_path, class:'dropdown-item' %>
                 </div>
-            </div>
+
+              </div>
+
             <% else %>
-<!--            %= link_to 'La Team', team_path, class:'nav-item nav-link' %>
-            %= link_to 'Get in Contact', contact_path, class:'nav-item nav-link' %> -->
-<!--            % unless session[:user_id] != nil %> -->
-            <div class="navbar-nav ml-auto pr-2">
-              <%= link_to "Connexion", new_user_session_path, class:'nav-item nav-link pr-1' %>
-              <%= link_to "Inscription", new_user_registration_path, class:'nav-item nav-link' %>
-            </div>
+              <div class="navbar-nav ml-auto pr-2">
+                <%= link_to "Connexion", new_user_session_path, class:'nav-item nav-link pr-1' %>
+                <%= link_to "Inscription", new_user_registration_path, class:'nav-item nav-link' %>
+              </div>
+
             <% end %>
           </div>
-          <div class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
-              <div class="nav-item dropdown ">
-                <%= link_to "Salut #{current_user.first_name} !", nil, class:'nav-link dropdown-toggle pr-2', 'id'=>"dropdownMenu3", 'data-toggle'=>"dropdown", 'aria-haspopup'=>"true", 'aria-expanded'=>"false"%>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                    <%= link_to "Mon profil", edit_user_registration_path, class:'dropdown-item' %>
-                    <%= link_to "Déconnexion", destroy_user_session_path, class:'dropdown-item', 'data-confirm' => 'Tu vas être déconnecté...', method: :delete %>
-                  </div>
-              </div>
-            <% end %>
+
+          <div class="nav-item dropdown ml-auto">
+            <%= link_to 'Actions', nil, class:'nav-link dropdown-toggle', 'id'=>"dropdownMenu2", 'data-toggle'=>"dropdown", 'aria-haspopup'=>"true", 'aria-expanded'=>"false"%>
+
+            <div class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenu3">
+              <% if current_user %>
+                <%= link_to 'Mon profil',users_show_path, class:"dropdown-item" %>
+                <%= link_to 'Éditer mon profil',edit_user_registration_path, class:"dropdown-item" %>
+                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+              <% else %>
+                <%= link_to 'Se connecter', new_user_session_path, class:"dropdown-item" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </nav>
     </header>
     <main>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+
       <div class="container">
+        <% if flash[:notice] %>
+          <div class="alert alert-success" role="alert"><%= flash[:notice] %>
+            <button type="button" class="close" aria-label="Close" onclick="this.parentElement.style.display='none';">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+
         <%= yield %>
       </div>
     </main>
