@@ -1,23 +1,26 @@
+<h1>Les évènements</h1>
+<small class="text-muted">
+  Les futurs évènements!
+</small>
 
 
 
+<div class="d-flex flex-wrap justify-content-between" style="margin-top: 15px; margin-bottom: 100px;">
 
-  <p class="alert alert-primary">
-    Clique sur le numéro pour afficher l'évènement</p>
-  <div class="row" style="margin-top: 15px;">
     <!-- récuperation des données, ligne par ligne pour l'affichage -->
     <% Event.all.each do |event| %>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card mt-4">
   <!-- <img class="card-img-top" src="/eventbrite.jpg" alt="Card image cap"> -->
-  <%= image_tag "/img/eventbrite.jpg", alt: "event_picture", class:"card-img-top" %>
+  <%= image_tag "/img/eventbrite.jpg", alt: "event_picture", class:"card-img-top"%>
   <div class="card-body">
     <h5 class="card-title"><%= event.title %></h5>
     <p class="card-text"><%= event.description %></p>
-    <%= link_to "Voir l'évènement", event_path(event.id), class:'btn btn-success' %>
+    <%= link_to "Voir l'évènement", event_path(event.id), class:'btn btn-outline-success' %>
   </div>
 </div>
 
 
-      </div>
+
     <% end %>
+      </div>

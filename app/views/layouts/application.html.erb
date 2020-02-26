@@ -52,16 +52,15 @@
             <% end %>
           </div>
 
-          <div class="nav-item dropdown ml-auto">
-            <%= link_to 'Actions', nil, class:'nav-link dropdown-toggle', 'id'=>"dropdownMenu2", 'data-toggle'=>"dropdown", 'aria-haspopup'=>"true", 'aria-expanded'=>"false"%>
+          <% if user_signed_in? %>
+            <div class="nav-item dropdown ml-auto">
+              <%= link_to 'Actions', nil, class:'nav-link dropdown-toggle', 'id'=>"dropdownMenu2", 'data-toggle'=>"dropdown", 'aria-haspopup'=>"true", 'aria-expanded'=>"false"%>
 
-            <div class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenu3">
-              <% if current_user %>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu3">
                 <%= link_to 'Mon profil',users_show_path, class:"dropdown-item" %>
                 <%= link_to 'Éditer mon profil',edit_user_registration_path, class:"dropdown-item" %>
                 <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"dropdown-item" %>
-              <% else %>
-                <%= link_to 'Se connecter', new_user_session_path, class:"dropdown-item" %>
+
               <% end %>
             </div>
           </div>

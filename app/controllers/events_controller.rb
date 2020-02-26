@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:index, :new, :create, :destroy, :show]
+
   def create
     puts params[:title], params[:description]
     @create_event = Event.new(title: params[:title], description: params[:description], host_id: current_user.id, location: params[:location], price: params[:price], duration: params[:duration], start_date: params[:start_date])
