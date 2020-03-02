@@ -1,9 +1,13 @@
 <h1><%= @event.title%></h1>
-<h2><%= @event.start_date%></h2>
+
 <div style="margin-top: 15px;">
 
+  <p>
+    Date et heure de début: <%= @event.start_date%>
+  </p>
+
   <p>Ville :
-    <strong><%= @city %></strong>
+    <strong><%= @event.location %></strong>
   </p>
   <p>Description:
     <strong><%= @event.description %></strong>
@@ -11,15 +15,19 @@
   <p>Publié le :
     <strong><%= @event.updated_at.to_time.strftime('%d/%m/%Y %H:%M:%S') %></strong>
   </div>
+  <p>Par :
+    <strong>
+      <%= @host.first_name %>
+      <%= @host.last_name %>
+    </strong>
+  </p>
   <% unless @event.host_id == current_user %>
-  <% then %>
-    <div>
-      <%= link_to "Effacer cet évènement", event_path(params[:id]), class:'btn btn-danger', style:'margin-top: 20px;', 'data-confirm' =>'Es tu sur ?', 'data-method' => 'DELETE'%>
-    </div>
+    <% then %>
+      <div>
+        <%= link_to "Effacer cet évènement", event_path(params[:id]), class:'btn btn-danger', style:'margin-top: 20px;', 'data-confirm' =>'Es tu sur ?', 'data-method' => 'DELETE'%>
+      </div>
     <% end %>
 
-
-
-  <div class="d-flex justify-content-around">
-    <%= link_to "Revenir à l'accueil", index_path, class:'btn btn-secondary', style:'margin-top: 20px;' %>
-  </div>
+    <div class="d-flex justify-content-around">
+      <%= link_to "Revenir à l'accueil", index_path, class:'btn btn-secondary', style:'margin-top: 20px;' %>
+    </div>

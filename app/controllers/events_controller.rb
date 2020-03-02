@@ -23,6 +23,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @host = Event.find(params[:id]).host
     # @host = Event.find(params[:id]).user.first_name
     # @city = Event.find(params[:id]).user.city.name
     # @comment = Comment.new

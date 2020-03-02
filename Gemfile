@@ -71,3 +71,4 @@ gem 'table_print'
 
 gem 'letter_opener'
 gem 'devise'
+gem 'stripe'
