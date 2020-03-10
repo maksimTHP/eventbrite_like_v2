@@ -1,20 +1,31 @@
 <div id="shadowprofile">
   <div id="user_profile_picture_box">
-  <%= image_tag "/img/profile_picture.png", alt: "profile_picture", id:"profilepicture", style:"border-radius: 50%;" %>
-
+    <%= image_tag "/img/profile_picture.png", alt: "profile_picture", id:"profilepicture", style:"border-radius: 50%;" %>
   </div>
-
   <div>
-    <h1 class="display-4 ml-4">Profil</h1>
-    <h1 class="lead ml-4">Salut <%= current_user.first_name %> <%= current_user.last_name %></h1>
-    <div style="max-width:280px;text-align:justify;">
-    <p class="ml-4"><u>Mail :</u> <%= current_user.email %><p>
-    <p class="ml-4"><u>Description :</u> <%= current_user.description %><p>
-    <p class="ml-4"><u>Utilisateur depuis le :</u> <%= current_user.created_at.to_time.strftime('%d/%m/%Y %H:%M:%S')  %>
-    </p>
+    <h1 class="display-4 ml-4">
+      Profil
+    </h1>
+    <h1 class="lead ml-4">Salut
+      <%= current_user.first_name %>
+      <%= current_user.last_name %>
+    </h1>
+    <div style="max-width:100%;text-align:justify;">
+      <p class="ml-4">
+        <u>Mail :</u>
+        <%= current_user.email %>
+        </p>
+        <p class="ml-4">
+          <u>Description :</u>
+          <%= current_user.description %>
+        </p>
+        <p class="ml-4">
+          <u>Utilisateur depuis le :</u>
+          <%= current_user.created_at.to_time.strftime('%d/%m/%Y %H:%M:%S') %>
+        </p>
     </div>
-    </div>
-    <div>
+  </div>
+  <div>
     <%= link_to "Éditer", edit_user_registration_path, class:"btn btn-outline-info mt-2 ml-5" %>
   </div>
 
